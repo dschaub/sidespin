@@ -5,6 +5,6 @@ class Game < ActiveRecord::Base
   validates :sequence, numericality: { only_integer: true }
 
   def winner
-    game_scores.sort(:rank).first.user
+    game_scores.order(:rank).first.user
   end
 end
