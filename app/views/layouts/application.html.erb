@@ -8,7 +8,15 @@
 <body>
     <div id="wrapper">
         <header id="header">
-            <a href="<%= root_url %>" class="logo container"><span class="ball"></span> sidespin</a>
+            <div class="container">
+                <a href="<%= root_url %>" class="logo"><span class="ball"></span> sidespin</a>
+
+                <% if user_signed_in? %>
+                    <div class="user-info">
+                        <%= link_to 'Logout', destroy_user_session_path %>
+                    </div>
+                <% end %>
+            </div>
         </header>
         <section id="main">
             <% if notice %>
