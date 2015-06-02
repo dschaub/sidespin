@@ -3,4 +3,7 @@ class Match < ActiveRecord::Base
   has_many :games
   has_many :game_scores, through: :games
   has_many :users, through: :game_scores
+
+  has_one :ball_color
+  has_one :ball_quality  
 end
