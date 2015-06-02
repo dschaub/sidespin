@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602001946) do
+ActiveRecord::Schema.define(version: 20150602011428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 20150602001946) do
     t.datetime "held_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ball_color"
+    t.string   "ball_quality"
   end
 
   add_index "matches", ["created_by_user_id"], name: "index_matches_on_created_by_user_id", using: :btree
