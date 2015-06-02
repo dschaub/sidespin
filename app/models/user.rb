@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true
 
   def record
-    summary = games.each_with_object({ wins: 0, losses: 0 }) do |obj, game|
+    summary = games.each_with_object({ wins: 0, losses: 0 }) do |game, obj|
       if game.winner == self
         obj[:wins] += 1
       else
