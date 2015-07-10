@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require reset
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
 
 $black: #222222;

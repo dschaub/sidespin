@@ -9,15 +9,15 @@ class User < ActiveRecord::Base
   validates :username, presence: true
 
   def record
-    summary = games.each_with_object({ wins: 0, losses: 0 }) do |game, obj|
+    games.each_with_object({ wins: 0, losses: 0, ties: 0 }) do |game, obj|
       if game.winner == self
         obj[:wins] += 1
+      elsif game.winner.nil?
+        obj[:ties] += 1
       else
         obj[:losses] += 1
       end
     end
-
-    "#{summary[:wins]}-#{summary[:losses]}"
   end
 
   def email_required?
