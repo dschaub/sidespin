@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :game_scores
   has_many :games, through: :game_scores
 
-  validates :username, presence: true
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   def email_required?
     false

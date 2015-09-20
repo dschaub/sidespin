@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920010138) do
+ActiveRecord::Schema.define(version: 20150920012331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,10 @@ ActiveRecord::Schema.define(version: 20150920010138) do
     t.datetime "updated_at"
     t.string   "ball_color"
     t.string   "ball_quality"
+    t.string   "activity"
   end
 
+  add_index "matches", ["activity"], name: "index_matches_on_activity", using: :btree
   add_index "matches", ["created_by_user_id"], name: "index_matches_on_created_by_user_id", using: :btree
 
   create_table "team_players", force: :cascade do |t|
