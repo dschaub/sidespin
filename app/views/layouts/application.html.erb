@@ -16,7 +16,9 @@
                         <%= link_to 'Logout', destroy_user_session_path %>
                     </div>
                 <% else %>
-                    <div class="user-info">Login form here</div>
+                    <div class="user-info">
+                      <%= render partial: 'devise/sessions/small_form' %>
+                    </div>
                 <% end %>
             </div>
         </header>

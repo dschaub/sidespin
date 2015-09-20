@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'dashboard#index'
+  root to: 'dashboards#show'
 
-  resources :matches, only: [:create]
+  resources :simple_matches, only: :create
+  resource :dashboard, only: :show
 end

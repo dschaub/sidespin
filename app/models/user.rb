@@ -8,6 +8,12 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
+  def build_simple_match(params = {})
+    SimpleMatch.new(params.merge created_by_user: self)
+  end
+
+  # devise setup
+
   def email_required?
     false
   end
