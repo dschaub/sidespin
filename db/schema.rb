@@ -11,21 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602011428) do
+ActiveRecord::Schema.define(version: 20150920010138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "game_scores", force: :cascade do |t|
     t.integer "game_id", null: false
-    t.integer "user_id", null: false
     t.integer "score",   null: false
     t.integer "rank",    null: false
+    t.integer "team_id", null: false
   end
 
-  add_index "game_scores", ["game_id", "user_id"], name: "index_game_scores_on_game_id_and_user_id", unique: true, using: :btree
   add_index "game_scores", ["game_id"], name: "index_game_scores_on_game_id", using: :btree
-  add_index "game_scores", ["user_id"], name: "index_game_scores_on_user_id", using: :btree
+  add_index "game_scores", ["team_id"], name: "index_game_scores_on_team_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.integer  "match_id",   null: false
@@ -47,6 +46,23 @@ ActiveRecord::Schema.define(version: 20150602011428) do
 
   add_index "matches", ["created_by_user_id"], name: "index_matches_on_created_by_user_id", using: :btree
 
+  create_table "team_players", force: :cascade do |t|
+    t.integer  "team_id",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "team_players", ["team_id", "user_id"], name: "index_team_players_on_team_id_and_user_id", unique: true, using: :btree
+  add_index "team_players", ["team_id"], name: "index_team_players_on_team_id", using: :btree
+  add_index "team_players", ["user_id"], name: "index_team_players_on_user_id", using: :btree
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -66,7 +82,9 @@ ActiveRecord::Schema.define(version: 20150602011428) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "game_scores", "games"
-  add_foreign_key "game_scores", "users"
+  add_foreign_key "game_scores", "teams"
   add_foreign_key "games", "matches"
   add_foreign_key "matches", "users", column: "created_by_user_id"
+  add_foreign_key "team_players", "teams"
+  add_foreign_key "team_players", "users"
 end
