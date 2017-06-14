@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
   end
 
+  resources :live_games, only: [:new, :create, :update, :show]
   resources :challenges
   resources :games
   resource :dashboard

@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 20170614190111) do
     t.index ["home_user_id"], name: "index_games_on_home_user_id"
   end
 
+  create_table "live_games", force: :cascade do |t|
+    t.integer "home_user_id"
+    t.integer "away_user_id"
+    t.integer "home_user_score", default: 0
+    t.integer "away_user_score", default: 0
+    t.boolean "current", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.integer "sign_in_count", default: 0, null: false

@@ -33,12 +33,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'simple_form'
-
 gem 'devise'
 gem 'omniauth-google-oauth2'
+gem 'pry-rails'
+gem 'pry-nav'
 
 gem 'elo'
 
+gem 'jquery-rails'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'slack-ruby-client'
 gem 'picky' # for slack user search
 
