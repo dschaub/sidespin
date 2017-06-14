@@ -12,6 +12,9 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= image_tag "sidespinlogo.png", class: 'logo' %>
+    <div class="content">
+        <%= yield %>
+    </div>
   </body>
 </html>
