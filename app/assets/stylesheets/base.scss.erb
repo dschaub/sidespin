@@ -6,9 +6,11 @@ html {
 body {
     background-image: url(<%= asset_data_uri 'background_nonmotion.jpg' %>);
     background-position: center top;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
+    padding-bottom: 50px;
 
     &.login {
         /*background-image: url(<%= asset_data_uri 'backgroundmotion.gif' %>);*/
@@ -21,7 +23,7 @@ body {
     background-color: #000000;
     border: 10px solid #F8C11C;
     width: 80%;
-    max-width: 1200px;
+    max-width: 1000px;
     display: block;
     margin: 50px auto;
     box-shadow: 5px 7px 1px rgba(#000000,0.5);
@@ -98,7 +100,7 @@ a {
 }
 
 .leaderboard {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
 
@@ -194,8 +196,8 @@ select {
     background-color: #000000;
     border: 0;
     border-bottom: 3px solid #ffffff;
-    font-size: 24px;
-    width: 200px;
+    font-size: 16px;
+    width: 250px;
     color: #ffffff;
     font-family: 'Press Start 2P', cursive;
     margin: 0 30px;
