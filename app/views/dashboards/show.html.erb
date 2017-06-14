@@ -12,3 +12,5 @@
   </tr>
   <%= render collection: @leaderboard_users, partial: 'leaderboard_user' %>
 </table>
+
+<%= link_to 'Show all players', dashboard_path(all_players: true) %>
