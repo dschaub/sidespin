@@ -1,11 +1,11 @@
 <tr>
-  <td>
+  <td class="left">
     <%= outgoing_challenge.away_user.full_name %>
   </td>
-  <td>
+  <td class="left">
     <%= outgoing_challenge.created_at.strftime('%m/%d/%Y') %>
   </td>
-  <td>
+  <td class="right">
     <%= button_to "Nudge", '#', class: 'small-button'  %>
   </td>
 </tr>
