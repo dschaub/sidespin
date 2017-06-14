@@ -1,0 +1,5 @@
+<h1>Challenge opponent</h1>
+<%= simple_form_for @challenge, url: challenges_path do |f| %>
+  <%= f.input :away_user_id, as: :select, label: 'Opponent', collection: @challenge.available_opponents, include_blank: false %>
+  <%= f.submit 'Challenge opponent' %>
+<% end %>

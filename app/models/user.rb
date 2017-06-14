@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :away_games, class_name: 'Game', foreign_key: :away_user_id
 
   scope :by_elo, -> { order(elo: :desc) }
+  scope :by_name, ->() { order(:full_name) }
 
   before_create :assign_default_elo
 
@@ -45,6 +46,10 @@ class User < ApplicationRecord
   def losses
     home_games.where('home_user_score < away_user_score').count +
       away_games.where('away_user_score < home_user_score').count
+  end
+
+  def available_opponents
+    self.class.where.not(id: id).by_name
   end
 
   class << self
