@@ -9,7 +9,7 @@ class Game < ApplicationRecord
   after_create :update_user_elos
 
   def available_opponents
-    User.where.not(id: home_user.id).order(:full_name).map do |user|
+    home_user.available_opponents.map do |user|
       [user.full_name, user.id]
     end
   end
@@ -17,7 +17,7 @@ class Game < ApplicationRecord
   private
 
   def home_and_away_users_must_be_different
-    errors.add(:base, 'Home and away users must be different') if home_user.id == away_user.id
+    errors.add(:base, 'Home and away users must be different') if home_user&.id == away_user&.id
   end
 
   def update_user_elos

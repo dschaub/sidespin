@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614184647) do
+ActiveRecord::Schema.define(version: 20170614190111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170614184647) do
     t.integer "away_user_id", null: false
     t.datetime "played_at"
     t.datetime "rejected_at"
-    t.integer "game_id", null: false
+    t.integer "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["away_user_id"], name: "index_challenges_on_away_user_id"
