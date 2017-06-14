@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614155612) do
+ActiveRecord::Schema.define(version: 20170614160739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "challenges", force: :cascade do |t|
+    t.integer "home_user_id", null: false
+    t.integer "away_user_id", null: false
+    t.datetime "played_at"
+    t.datetime "rejected_at"
+    t.integer "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["away_user_id"], name: "index_challenges_on_away_user_id"
+    t.index ["game_id"], name: "index_challenges_on_game_id"
+    t.index ["home_user_id"], name: "index_challenges_on_home_user_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.integer "home_user_id", null: false
@@ -39,6 +52,9 @@ ActiveRecord::Schema.define(version: 20170614155612) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "challenges", "games"
+  add_foreign_key "challenges", "users", column: "away_user_id"
+  add_foreign_key "challenges", "users", column: "home_user_id"
   add_foreign_key "games", "users", column: "away_user_id"
   add_foreign_key "games", "users", column: "home_user_id"
 end

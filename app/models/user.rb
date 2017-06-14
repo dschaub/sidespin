@@ -1,5 +1,9 @@
 class User < ApplicationRecord
   devise :trackable, :omniauthable, :timeoutable, omniauth_providers: [:google_oauth2]
+
+  has_many :outgoing_challenges, foreign_key: :home_user_id, class_name: 'Challenge'
+  has_many :incoming_challenges, foreign_key: :away_user_id, class_name: 'Challenge'
+
   OAUTH_ALLOWED_DOMAINS = %w(betterment.com).freeze
 
   def self.from_omniauth(auth)
