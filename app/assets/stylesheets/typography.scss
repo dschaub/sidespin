@@ -19,7 +19,12 @@ h1 {
 }
 
 h2 {
+    padding-bottom: 20px;
 
+    @media (max-width: 500px) {
+        font-size: 18px;
+        line-height: 1.5em;
+    }
 }
 
 p {
@@ -29,4 +34,10 @@ p {
 table {
     font-size: 16px;
     line-height: 1.5em;
+}
+
+input[type="submit"] {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    font-size: 16px;
 }
