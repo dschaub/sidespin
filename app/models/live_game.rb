@@ -28,7 +28,7 @@ class LiveGame < ApplicationRecord
 	end
 
 	def finish_game!
-        update_attribute(:current, false)
+		update_attribute(:current, false)
 		# Game.new({
 		# 	home_user: home_user,
 		# 	away_user: away_user,
