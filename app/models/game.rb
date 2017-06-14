@@ -2,6 +2,11 @@ class Game < ApplicationRecord
   belongs_to :home_user, class_name: 'User'
   belongs_to :away_user, class_name: 'User'
 
+  scope :won_by_home_user, -> { where('home_user_score > away_user_score') }
+  scope :won_by_away_user, -> { where('away_user_score > home_user_score') }
+  scope :played_since, -> (since) { where('created_at >= ?', since) }
+  scope :by_recency, -> { order(created_at: :desc) }
+
   validates :home_user, :home_user_score, :away_user, :away_user_score, presence: true
 
   validate :home_and_away_users_must_be_different
@@ -12,6 +17,11 @@ class Game < ApplicationRecord
     home_user.available_opponents.map do |user|
       [user.full_name, user.id]
     end
+  end
+
+  def won_by?(user)
+    (home_user == user && home_user_score > away_user_score) ||
+      (away_user == user && away_user_score > home_user_score)
   end
 
   private

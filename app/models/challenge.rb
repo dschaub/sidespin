@@ -40,7 +40,8 @@ class Challenge < ApplicationRecord
   end
 
   def must_only_have_one_pending_challenge
-    if self.class.pending.related_to_users(home_user, away_user) != self
+    existing_challenge = self.class.pending.related_to_users(home_user, away_user)
+    if existing_challenge.present? && existing_challenge != self
       errors.add(:base, "Already have active challenge")
     end
   end
