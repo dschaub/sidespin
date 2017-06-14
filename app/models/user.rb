@@ -39,13 +39,13 @@ class User < ApplicationRecord
   end
 
   def wins
-    home_games.where('home_user_score > away_user_score').count +
-      away_games.where('away_user_score > home_user_score').count
+    home_games.where('home_user_score > away_user_score')
+      .or(away_games.where('away_user_score > home_user_score')).count
   end
 
   def losses
-    home_games.where('home_user_score < away_user_score').count +
-      away_games.where('away_user_score < home_user_score').count
+    home_games.where('home_user_score < away_user_score')
+      .or(away_games.where('away_user_score < home_user_score')).count
   end
 
   def available_opponents
