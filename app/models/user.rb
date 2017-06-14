@@ -17,6 +17,7 @@ class User < ApplicationRecord
   scope :by_name, ->() { order(:full_name) }
 
   before_create :assign_default_elo
+  after_create :assign_slack_id
 
   def self.from_omniauth(auth)
     if oauth_allowed_domain? auth
@@ -83,6 +84,14 @@ class User < ApplicationRecord
     self.class.where.not(id: id).by_name
   end
 
+  def remind(reminding_user)
+    if slack_id
+      client.chat_postMessage(channel: slack_id, text: "#{reminding_user.full_name} wants you to play you in ping pong!", as_user: true)
+    end
+  rescue
+      #in case slack messes up
+  end
+
   class << self
     private
 
@@ -99,5 +108,16 @@ class User < ApplicationRecord
 
   def all_games
     @all_games ||= home_games.or(away_games)
+  end
+
+  def assign_slack_id
+    self.slack_id = SlackUser.new(self).id
+    save!
+  rescue
+
+  end
+
+  def client
+    @client ||= Slack::Web::Client.new
   end
 end
