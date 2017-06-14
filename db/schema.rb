@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614175543) do
+ActiveRecord::Schema.define(version: 20170614190111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,20 @@ ActiveRecord::Schema.define(version: 20170614175543) do
     t.integer "away_user_id", null: false
     t.datetime "played_at"
     t.datetime "rejected_at"
-    t.integer "game_id", null: false
+    t.integer "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["away_user_id"], name: "index_challenges_on_away_user_id"
     t.index ["game_id"], name: "index_challenges_on_game_id"
     t.index ["home_user_id"], name: "index_challenges_on_home_user_id"
+  end
+
+  create_table "elo_histories", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "elo", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_elo_histories_on_user_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -56,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170614175543) do
   add_foreign_key "challenges", "games"
   add_foreign_key "challenges", "users", column: "away_user_id"
   add_foreign_key "challenges", "users", column: "home_user_id"
+  add_foreign_key "elo_histories", "users"
   add_foreign_key "games", "users", column: "away_user_id"
   add_foreign_key "games", "users", column: "home_user_id"
 end

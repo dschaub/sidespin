@@ -2,3 +2,16 @@
 <%= render partial: 'games/form', locals: { game: @game } %>
 
 <%= link_to "View challenges", challenges_path %>
+
+<h1>Leaderboard</h1>
+
+<table>
+  <tr>
+    <th>Rank</th>
+    <th>Name</th>
+    <th>Rating</th>
+    <th>Wins</th>
+    <th>Losses</th>
+  </tr>
+  <%= render collection: @leaderboard_users, partial: 'leaderboard_user' %>
+</table>
