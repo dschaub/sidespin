@@ -25,3 +25,133 @@ body {
     margin: 50px auto;
     box-shadow: 5px 7px 1px rgba(#000000,0.5);
 }
+
+a {
+    color: white;
+    text-decoration: underline;
+    font-size: 14px;
+
+    &:hover {
+        color: #bbbbbb;
+    }
+
+    &:visited {
+        color: white;
+    }
+}
+
+.pingpong-paddle {
+    width: percentage(150px/1200px);
+    max-width: 150px;
+    display: block;
+    margin: 5% auto 30px;
+
+    @media (max-width: 800px) {
+        width: percentage(150px/800px);
+    max-width: 150px;
+    }
+}
+
+.floating-pingpong-paddle {
+    width: percentage(150px/1200px);
+    max-width: 150px;
+    display: block;
+    margin: -60px 0 0 -35px;
+
+    @media (max-width: 500px) {
+        display: none;
+    }
+}
+
+.logo {
+    width: percentage(500px/1200px);
+    max-width: 500px;
+    display: block;
+    margin: 50px auto 30px;
+
+    @media (max-width: 800px) {
+        width: percentage(500px/800px);
+        max-width: 500px;
+    }
+}
+
+.google-signin {
+    position: relative;
+    display: block;
+    text-indent: -9999px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    max-width: 275px;
+    width: percentage(275px/1200px);
+    padding-bottom: percentage(63px/1200px);
+    margin: 50px auto;
+    background-image: url(<%= asset_data_uri 'btn_google_signin_dark_normal_web@2x.png' %>);
+
+    @media (max-width: 800px) {
+        max-width: 275px;
+        width: percentage(275px/500px);
+        padding-bottom: percentage(63px/500px);
+    }
+}
+
+.leaderboard {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+
+    .left {
+        text-align: left;
+    }
+
+    th {
+        color: #999999;
+        padding: 15px 0;
+    }
+
+    td {
+        color: white;
+        padding: 15px 0;
+    }
+
+    .top-3 {
+        td {
+            color: #7ED321;
+        }
+    }
+}
+
+.button-green, .button-red {
+    padding: 30px;
+    box-shadow: 5px 7px 1px rgba(#000000,0.5);
+    color: white;
+    text-decoration: none;
+
+    &:disabled {
+        background-color: #999999;
+    }
+
+    @media (max-width: 800px) {
+        padding: 27px;
+    }
+
+    @media (max-width: 500px) {
+        padding: 25px;
+    }
+}
+
+.button-green {
+    background-color: #7ED321;
+
+    &:hover {
+        background-color: #68B01A;
+    }
+}
+
+.button-red {
+    background-color: #A20013;
+
+    &:hover {
+        background-color: #999999;
+    }
+}
