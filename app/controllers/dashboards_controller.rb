@@ -3,6 +3,7 @@ class DashboardsController < ApplicationController
 
   def show
     @game = current_user.build_game
-    @leaderboard_users = User.by_elo.limit(10)
+    @leaderboard_users = User.by_elo
+    @leaderboard_users = @leaderboard_users.limit(10) unless params[:all_players].present?
   end
 end
