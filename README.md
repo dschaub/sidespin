@@ -1,17 +1,24 @@
-# sidespin
+# README
 
-```
-# get it
-git clone https://github.com/dschaub/sidespin.git
-cd sidespin
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-# install it
-bundle install
+Things you may want to cover:
 
-# database in postgres
-createdb sidespin_development
-rake db:setup
+* Ruby version
 
-# go
-rails s
-```
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
