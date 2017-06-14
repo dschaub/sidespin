@@ -1,12 +1,12 @@
 <tr>
-  <td>
+  <td class="left">
     <%= incoming_challenge.home_user.full_name %>
   </td>
-  <td>
+  <td class="left">
     <%= incoming_challenge.created_at.strftime('%m/%d/%Y') %>
   </td>
-  <td>
+  <td class="right">
     <%= button_to "Accept", new_game_path(challenge_id: incoming_challenge.id), method: :get, class: 'small-button' %>
-    <%= button_to "Reject", challenge_path(incoming_challenge), method: :delete %>
+    <%= button_to "Reject", challenge_path(incoming_challenge), method: :delete, class: 'small-button'  %>
   </td>
 </tr>
