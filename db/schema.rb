@@ -36,15 +36,6 @@ ActiveRecord::Schema.define(version: 20170614181219) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "livegames", force: :cascade do |t|
-    t.integer "home_user_id"
-    t.integer "away_user_id"
-    t.integer "home_user_score"
-    t.integer "away_user_score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.integer "sign_in_count", default: 0, null: false
