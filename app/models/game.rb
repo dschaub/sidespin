@@ -43,5 +43,6 @@ class Game < ApplicationRecord
   def complete_challenge
     challenge = Challenge.pending.related_to_users(home_user, away_user)
     challenge&.complete!(self)
+    true
   end
 end
