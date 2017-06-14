@@ -1,0 +1,17 @@
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-image: url(<%= asset_data_uri 'background_nonmotion.jpg' %>);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+
+    &.login {
+        /*background-image: url(<%= asset_data_uri 'backgroundmotion.gif' %>);*/
+        background-size: cover;
+    }
+}

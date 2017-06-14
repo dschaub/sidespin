@@ -1,3 +1,19 @@
-<h2>Log in</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <title>Sidespin</title>
+    <%= csrf_meta_tags %>
 
-<%= link_to 'Log in with Google', user_google_oauth2_omniauth_authorize_path %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="login">
+    <%= image_tag "pingpongpaddle.png", class: 'pingpong-paddle' %>
+    <%= image_tag "sidespinlogo.png", class: 'logo' %>
+    <h1>Welcome to ping-pong</h1>
+    <%= link_to 'Log in with Google', user_google_oauth2_omniauth_authorize_path, class: 'google-signin' %>
+
+  </body>
+</html>
