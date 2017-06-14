@@ -3,11 +3,11 @@
   <td class="left">
     <%= leaderboard_user.full_name %>
     <% if leaderboard_user.friendliness > 50 %>
-      <%= image_tag 'emoji_heart.png' %>
+      <%= image_tag 'emoji_heart.png', title: 'Very friendly! Played more than half of all players!' %>
     <% end %>
 
     <% if leaderboard_user.on_fire? %>
-      <%= image_tag 'emoji_fire.png' %>
+      <%= image_tag 'emoji_fire.png', title: 'On fire! Won 3 games in a row' %>
     <% end %>
   </td>
   <td><%= leaderboard_user.elo %></td>
