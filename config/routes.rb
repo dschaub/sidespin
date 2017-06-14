@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   end
 
   resources :challenges
+  resources :games
   resource :dashboard
+
   root to: redirect('/dashboard')
 end

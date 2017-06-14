@@ -19,6 +19,10 @@ class User < ApplicationRecord
     end
   end
 
+  def build_game(params = {})
+    Game.new(params.merge(home_user: self))
+  end
+
   class << self
     private
 
