@@ -48,7 +48,12 @@ class User < ApplicationRecord
 
   def friendliness
     opponents = (all_games.played_since(1.month.ago)).map { |game| game.home_user == self ? game.away_user : game.home_user }.uniq.count
-    (opponents.to_f / available_opponents.count.to_f * 100.0).to_i
+
+    if available_opponents.count > 0
+      (opponents.to_f / available_opponents.count.to_f * 100.0).to_i
+    else
+      0
+    end
   end
 
   def on_fire?
