@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <title>Sidespin</title>
     <%= csrf_meta_tags %>
 
@@ -11,6 +12,9 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= image_tag "sidespinlogo.png", class: 'logo' %>
+    <div class="content">
+        <%= yield %>
+    </div>
   </body>
 </html>

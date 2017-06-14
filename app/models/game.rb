@@ -6,7 +6,7 @@ class Game < ApplicationRecord
 
   validate :home_and_away_users_must_be_different
 
-  after_create :update_user_elos
+  after_create :update_user_elos, :complete_challenge
 
   def available_opponents
     home_user.available_opponents.map do |user|
@@ -38,5 +38,10 @@ class Game < ApplicationRecord
 
     home_user.update!(elo: home_player.rating)
     away_user.update!(elo: away_player.rating)
+  end
+
+  def complete_challenge
+    challenge = Challenge.pending.find_by(home_user: home_user, away_user: away_user) || Challenge.find_by(home_user: away_user, away_user: home_user)
+    challenge&.complete!(self)
   end
 end
