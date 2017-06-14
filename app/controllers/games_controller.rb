@@ -1,4 +1,8 @@
 class GamesController < ApplicationController
+  def new
+    @game = current_user.build_game
+  end
+
   def create
     @game = current_user.build_game(create_params)
 
