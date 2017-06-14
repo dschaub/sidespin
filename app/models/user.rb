@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :outgoing_challenges, foreign_key: :home_user_id, class_name: 'Challenge'
   has_many :incoming_challenges, foreign_key: :away_user_id, class_name: 'Challenge'
+  has_many :elo_histories
 
   before_create :assign_default_elo
 
@@ -25,6 +26,10 @@ class User < ApplicationRecord
 
   def build_game(params = {})
     Game.new(params.merge(home_user: self))
+  end
+
+  def record_elo_history!
+    elo_histories.create!(elo: elo)
   end
 
   class << self

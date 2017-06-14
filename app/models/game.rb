@@ -21,6 +21,8 @@ class Game < ApplicationRecord
   end
 
   def update_user_elos
+    [home_user, away_user].each(&:record_elo_history!)
+
     home_player = Elo::Player.new(rating: home_user.elo)
     away_player = Elo::Player.new(rating: away_user.elo)
 
