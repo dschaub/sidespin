@@ -17,9 +17,10 @@ body {
 }
 
 .content {
+    padding: 0 5% 5% 5%;
     background-color: #000000;
     border: 10px solid #F8C11C;
-    width: 90%;
+    width: 80%;
     max-width: 1200px;
     display: block;
     margin: 50px auto;
@@ -53,12 +54,13 @@ a {
 }
 
 .floating-pingpong-paddle {
+    position: absolute;
     width: percentage(150px/1200px);
     max-width: 150px;
     display: block;
-    margin: -60px 0 0 -35px;
+    margin: -60px 0 0 -9%;
 
-    @media (max-width: 500px) {
+    @media (max-width: 800px) {
         display: none;
     }
 }
@@ -125,10 +127,15 @@ a {
     padding: 30px;
     box-shadow: 5px 7px 1px rgba(#000000,0.5);
     color: white;
+    display: inline-block;
     text-decoration: none;
 
     &:disabled {
         background-color: #999999;
+    }
+
+    &:hover {
+        color: white;
     }
 
     @media (max-width: 800px) {
@@ -154,4 +161,14 @@ a {
     &:hover {
         background-color: #999999;
     }
+}
+
+.play-a-game {
+    margin-top: -70px;
+}
+
+.challenges {
+    display: block;
+    padding: 25px 0 30px;
+    line-height: 2.4em;
 }
