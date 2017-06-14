@@ -6,7 +6,7 @@
     <%= incoming_challenge.created_at.strftime('%m/%d/%Y') %>
   </td>
   <td>
-    <%= button_to "Accept", new_game_path(challenge_id: incoming_challenge.id), method: :get %>
+    <%= button_to "Accept", new_game_path(challenge_id: incoming_challenge.id), method: :get, class: 'small-button' %>
     <%= button_to "Reject", challenge_path(incoming_challenge), method: :delete %>
   </td>
 </tr>
