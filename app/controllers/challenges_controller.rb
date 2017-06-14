@@ -18,6 +18,12 @@ class ChallengesController < ApplicationController
     end
   end
 
+  def destroy
+    challenge = current_user.incoming_challenges.find params[:id]
+    challenge.reject!
+    redirect_to challenges_path
+  end
+
   private
 
   def challenge_params
