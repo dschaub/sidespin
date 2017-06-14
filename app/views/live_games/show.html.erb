@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-sm-6">
+    <div class="row">
+      <div class"col-sm-2 col-offset-sm-5" id="server-ball">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-offset-sm-2 col-sm-4">
+        <%= @live_game.home_user_score %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-offset-sm-2 col-sm-4">
+        <%= @live_game.home_user.full_name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="row">
+      <div class"col-sm-2 col-offset-sm-5" id="server-ball">
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-offset-sm-2 col-sm-4">
+        <%= @live_game.away_user_score %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-offset-sm-2 col-sm-4">
+        <%= @live_game.away_user.full_name %>
+      </div>
+    </div>
+  </div>
+</div>
