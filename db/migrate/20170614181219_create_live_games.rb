@@ -5,7 +5,7 @@ class CreateLiveGames < ActiveRecord::Migration[5.1]
       t.integer :away_user_id
       t.integer :home_user_score
       t.integer :away_user_score
-      
+
       t.boolean :current, default: true
       t.timestamps
     end
