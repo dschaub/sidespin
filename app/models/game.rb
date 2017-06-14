@@ -9,7 +9,7 @@ class Game < ApplicationRecord
   after_create :update_user_elos
 
   def available_opponents
-    User.where.not(id: home_user.id).map do |user|
+    User.where.not(id: home_user.id).order(:full_name).map do |user|
       [user.full_name, user.id]
     end
   end
