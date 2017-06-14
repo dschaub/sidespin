@@ -57,7 +57,7 @@ class User < ApplicationRecord
   end
 
   def on_fire?
-    all_games.by_recency.limit(3).all? { |game| game.won_by?(self) }
+    all_games.count >= 3 && all_games.by_recency.limit(3).all? { |game| game.won_by?(self) }
   end
 
   def available_opponents
