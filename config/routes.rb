@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   end
 
   resource :live_game, only: [:new, :create, :update]
-
+  resources :challenges
+  resources :games
   resource :dashboard
+
   root to: redirect('/dashboard')
 end
