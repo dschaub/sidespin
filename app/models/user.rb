@@ -39,13 +39,25 @@ class User < ApplicationRecord
   end
 
   def wins
-    home_games.where('home_user_score > away_user_score').count +
-      away_games.where('away_user_score > home_user_score').count
+    home_games.won_by_home_user.or(away_games.won_by_away_user).count
   end
 
   def losses
-    home_games.where('home_user_score < away_user_score').count +
-      away_games.where('away_user_score < home_user_score').count
+    home_games.won_by_away_user.or(away_games.won_by_home_user).count
+  end
+
+  def friendliness
+    opponents = (all_games.played_since(1.month.ago)).map { |game| game.home_user == self ? game.away_user : game.home_user }.uniq.count
+
+    if available_opponents.count > 0
+      (opponents.to_f / available_opponents.count.to_f * 100.0).to_i
+    else
+      0
+    end
+  end
+
+  def on_fire?
+    all_games.count >= 3 && all_games.by_recency.limit(3).all? { |game| game.won_by?(self) }
   end
 
   def available_opponents
@@ -64,5 +76,9 @@ class User < ApplicationRecord
 
   def assign_default_elo
     self.elo = DEFAULT_ELO
+  end
+
+  def all_games
+    @all_games ||= home_games.or(away_games)
   end
 end

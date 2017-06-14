@@ -1,4 +1,7 @@
-<%= link_to "View challenges", challenges_path %>
+<%= link_to "Play a game!", challenges_path, class: 'button-green top-button' %>
+<div class="challenges">
+    <%= link_to "Challenges".html_safe, challenges_path %> <%= link_to "Log&nbsp;a&nbsp;game".html_safe, new_game_path %>
+</div>
 <table class="leaderboard">
   <tr>
     <th class="left">Rank</th>
@@ -10,5 +13,4 @@
   <%= render collection: @leaderboard_users, partial: 'leaderboard_user' %>
 </table>
 
-<h1>Enter a score</h1>
-<%= render partial: 'games/form', locals: { game: @game } %>
+<%= link_to 'Show all players', dashboard_path(all_players: true), class: 'show-players' %>

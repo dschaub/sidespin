@@ -1,27 +1,15 @@
-<h1>CHALLENGES</h1>
+<%= link_to "Challenge Somebody!", new_challenge_path, class: 'button-green top-button' %>
 
-<%= link_to "New challenge", new_challenge_path %>
-
-<h2>Incoming challenges</h2>
+<h2 class="extra-margin">Challenges received:</h2>
 
 <table>
-  <thead>
-    <th>Challenger</th>
-    <th>Challenged on</th>
-    <th>Actions</th>
-  </thead>
   <tbody>
     <%= render partial: 'incoming_challenge', collection: @incoming_challenges, as: :incoming_challenge %>
   </tbody>
 </table>
 
-<h2>Awaiting response</h2>
+<h2>Challenges sent:</h2>
 <table>
-  <thead>
-    <th>Challenged</th>
-    <th>Challenged on</th>
-    <th>Actions <%# maybe we can bug the user %></th>
-  </thead>
   <tbody>
     <%= render partial: 'outgoing_challenge', collection: @outgoing_challenges, as: :outgoing_challenge %>
   </tbody>

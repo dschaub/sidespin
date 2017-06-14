@@ -12,9 +12,11 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= image_tag "sidespinlogo.png", class: 'logo' %>
+    <%= link_to image_tag("sidespinlogo.png", class: 'logo'), root_path %>
     <div class="content">
+        <%= image_tag "pingpongpaddle.png", class: 'floating-pingpong-paddle' %>
         <%= yield %>
     </div>
+    <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
   </body>
 </html>
