@@ -17,5 +17,6 @@
         <%= image_tag "pingpongpaddle.png", class: 'floating-pingpong-paddle' %>
         <%= yield %>
     </div>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
   </body>
 </html>
