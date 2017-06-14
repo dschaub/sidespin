@@ -18,9 +18,9 @@ class LiveGame < ApplicationRecord
     update_user_score(user_score, :-)
   end
 
-  # Make this work for 1 point games
   def server
-    [:home, :away][total_score/5%2]
+    method_to_determine_server = total_score >= 4 ? :every_two : :every_five
+    [:home, :away][send(method_to_determine_server)]
   end
 
   def underdog
@@ -39,6 +39,14 @@ class LiveGame < ApplicationRecord
   end
 
   private
+
+  def every_five
+    total_score/5%2
+  end
+
+  def every_two
+    total_score%2
+  end
 
   def total_score
     home_user_score + away_user_score
