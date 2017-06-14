@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20170614190111) do
   create_table "live_games", force: :cascade do |t|
     t.integer "home_user_id"
     t.integer "away_user_id"
-    t.integer "home_user_score"
-    t.integer "away_user_score"
+    t.integer "home_user_score", default: 0
+    t.integer "away_user_score", default: 0
     t.boolean "current", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
