@@ -36,7 +36,6 @@ class LiveGame < ApplicationRecord
   end
 
   def finish_game!
-    binding.pry
     Game.create({
       home_user: home_user,
       away_user: away_user,
