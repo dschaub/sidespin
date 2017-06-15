@@ -13,4 +13,8 @@
   <%= render collection: @leaderboard_users, partial: 'leaderboard_user' %>
 </table>
 
-<%= link_to 'Show all players', dashboard_path(all_players: true), class: 'show-players' %>
+<% if @showing_all %>
+  <%= link_to 'Show ranked players', dashboard_path, class: 'show-players' %>
+<% else %>
+  <%= link_to 'Show all players', dashboard_path(all_players: true), class: 'show-players' %>
+<% end %>

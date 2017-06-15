@@ -4,6 +4,7 @@ class User < ApplicationRecord
   OAUTH_ALLOWED_DOMAINS = %w(betterment.com).freeze
 
   DEFAULT_ELO = 1000
+  MIN_GAMES_FOR_RATING = 3
 
   has_many :outgoing_challenges, foreign_key: :home_user_id, class_name: 'Challenge'
   has_many :incoming_challenges, foreign_key: :away_user_id, class_name: 'Challenge'
@@ -30,6 +31,12 @@ class User < ApplicationRecord
     end
   end
 
+  def self.rankable
+    joins('INNER JOIN games AS gc ON gc.home_user_id = users.id OR gc.away_user_id = users.id')
+      .group('users.id')
+      .having('COUNT(gc.*) >= ?', MIN_GAMES_FOR_RATING)
+  end
+
   def build_game(params = {})
     Game.new(params.merge(home_user: self))
   end
@@ -39,11 +46,23 @@ class User < ApplicationRecord
   end
 
   def wins
-    home_games.won_by_home_user.or(away_games.won_by_away_user).count
+    @wins ||= home_games.won_by_home_user.or(away_games.won_by_away_user).count
   end
 
   def losses
-    home_games.won_by_away_user.or(away_games.won_by_home_user).count
+    @losses ||= home_games.won_by_away_user.or(away_games.won_by_home_user).count
+  end
+
+  def total_games
+    wins + losses
+  end
+
+  def ranked?
+    total_games >= MIN_GAMES_FOR_RATING
+  end
+
+  def display_rating
+    ranked? ? elo : 'NEW'
   end
 
   def friendliness
