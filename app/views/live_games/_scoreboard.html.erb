@@ -1,56 +1,96 @@
 <div class="row">
-      <div class="col-sm-6 scoreboard-border liveboard-padding">
-        <div class="row server-container">
-          <div class="col-sm-12" id="server-ball">
-            <%= image_tag "pingpongball.png", class: 'pingpong-ball' %>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <h3><%= live_game.home_user_score %></h3>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <h4><%= live_game.home_user.full_name %></h4>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <p class="yellow">Underdog</p>
-          </div>
-        </div>
+  <div class="col-sm-6 scoreboard-border liveboard-padding">
+    <div class="row server-container">
+      <div class="col-sm-12" id="server-ball">
+        <%= image_tag "pingpongball.png", class: 'pingpong-ball' %>
       </div>
+    </div>
 
-      <div class="col-sm-6 liveboard-padding">
-        <div class="row server-container">
-          <div class"col-sm-12" id="server-ball">
-
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <h3><%= live_game.away_user_score %></h3>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-12">
-            <h4><%= live_game.away_user.full_name %></h4>
-          </div>
-        </div>
-      </div>
-
+    <div class="row">
       <div class="col-sm-12">
-        <%= simple_form_for live_game, url: live_game_path do |f| %>
-          <%= f.error :base %>
-          <%= f.hidden_field :current, value: 'false' %>
-          <%= f.submit 'Finish game', class: 'button-red finish-game' %>
+        <h3><%= live_game.home_user_score %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h4><%= live_game.home_user.full_name %></h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="yellow">Underdog</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <%= simple_form_for @live_game do |f| %>
+        <%= f.input_field :user_side, as: :hidden, value: 'home' %>
+        <%= f.input_field :operator, as: :hidden, value: '+' %>
+        <%= f.submit '+' %>
         <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <%= simple_form_for @live_game do |f| %>
+        <%= f.input_field :user_side, as: :hidden, value: 'home' %>
+        <%= f.input_field :operator, as: :hidden, value: '-' %>
+        <%= f.submit '-' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 liveboard-padding">
+    <div class="row server-container">
+      <div class"col-sm-12" id="server-ball">
 
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h3><%= live_game.away_user_score %></h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h4><%= live_game.away_user.full_name %></h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <%= simple_form_for @live_game do |f| %>
+        <%= f.input_field :user_side, as: :hidden, value: 'away' %>
+        <%= f.input_field :operator, as: :hidden, value: '+' %>
+        <%= f.submit '+' %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <%= simple_form_for @live_game do |f| %>
+        <%= f.input_field :user_side, as: :hidden, value: 'away' %>
+        <%= f.input_field :operator, as: :hidden, value: '-' %>
+        <%= f.submit '-' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <%= simple_form_for live_game, url: live_game_path do |f| %>
+    <%= f.error :base %>
+    <%= f.hidden_field :current, value: 'false' %>
+    <%= f.submit 'Finish game', class: 'button-red finish-game' %>
+    <% end %>
+
+  </div>
+</div>

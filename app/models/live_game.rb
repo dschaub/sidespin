@@ -12,6 +12,11 @@ class LiveGame < ApplicationRecord
   def update_user_score(user_side, operator=:+)
     current_score = send("#{user_side}_user_score")
     send("#{user_side}_user_score=", current_score.send(operator, 1))
+    save
+  end
+
+  def update_score(params)
+    update_user_score(params[:user_side], params[:operator])
   end
 
   alias_method :increment_user_score, :update_user_score

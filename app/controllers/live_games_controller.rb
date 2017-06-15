@@ -21,8 +21,8 @@ class LiveGamesController < ApplicationController
 
   def update
     @live_game = LiveGame.find_by_id(params[:id])
-    if @live_game.update(update_params)
-      head :ok
+    if @live_game.update_score(update_params)
+      redirect_to live_game_url(@live_game)
     else
       # Error or something
     end
@@ -31,7 +31,7 @@ class LiveGamesController < ApplicationController
   private
 
   def update_params
-    params.require(:live_game).permit(:user_type, :score_updater, :current)
+    params.require(:live_game).permit(:user_side, :operator, :current)
   end
 
   def create_params
