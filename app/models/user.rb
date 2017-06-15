@@ -17,7 +17,7 @@ class User < ApplicationRecord
   scope :by_name, ->() { order(:full_name) }
 
   before_create :assign_default_elo
-  after_create :assign_slack_id
+  after_create :assign_slack_id_by_email
   attr_reader :slack_user_name
 
   def self.from_omniauth(auth)
