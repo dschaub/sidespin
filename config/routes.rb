@@ -8,10 +8,12 @@ Rails.application.routes.draw do
 
   resources :live_games, only: [:new, :create, :update, :show]
 
-  resources :challenges
+  resources :challenges do
+    resource :nudge
+  end
+
   resources :games
   resource :dashboard
-  resource :current_score
   resource :me, only: [:show, :update], controller: 'me'
 
   namespace :api do

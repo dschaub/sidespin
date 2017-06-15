@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-sm-6 scoreboard-border liveboard-padding">
     <div class="row server-container">
-      <div class="col-sm-12" id="server-ball">
-        <%= image_tag "pingpongball.png", class: 'pingpong-ball' %>
+      <div class="col-sm-12">
+        <%= image_tag "pingpongball.png", class: 'pingpong-ball', id: 'server-ball' %>
       </div>
     </div>
 
@@ -20,7 +20,7 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <p class="yellow underdog-container">Underdog</p>
+        <p class="yellow underdog-container" id="underdog">Underdog</p>
       </div>
     </div>
 
@@ -50,8 +50,8 @@
 
   <div class="col-sm-6 liveboard-padding">
     <div class="row server-container">
-      <div class"col-sm-12" id="server-ball">
-
+      <div class"col-sm-12">
+        <%= image_tag "pingpongball.png", class: 'pingpong-ball', id: 'server-ball' %>
       </div>
     </div>
 
@@ -69,7 +69,7 @@
 
      <div class="row">
       <div class="col-sm-12">
-        <p class="yellow underdog-container"></p>
+        <p class="yellow underdog-container show" id="underdog">Underdog</p>
       </div>
     </div>
 
@@ -106,7 +106,7 @@
 (function() {
   var interval = setInterval(function() {
     $.ajax({
-      url: '/current_score',
+      url: '/live_games/<%= @live_game.id %>',
       dataType: 'script'
     });
   }, 2000);
