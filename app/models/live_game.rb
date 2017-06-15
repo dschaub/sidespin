@@ -8,6 +8,7 @@ class LiveGame < ApplicationRecord
   # Maybe alias both methods (:home_elo_rating, :away_elo_rating) on :user to :elo_rating
   # delegate :home_elo_rating, to: :home_user
   # delegate :away_elo_rating, to: :away_user
+  #
 
   def update_user_score(user_side, operator=:+)
     current_score = send("#{user_side}_user_score")
