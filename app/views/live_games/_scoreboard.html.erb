@@ -106,7 +106,7 @@
 (function() {
   var interval = setInterval(function() {
     $.ajax({
-      url: '/current_score',
+      url: '/live_games/<%= @live_game.id %>',
       dataType: 'script'
     });
   }, 2000);
