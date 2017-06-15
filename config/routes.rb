@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :live_games, only: [:new, :create, :update, :show]
+
   resources :challenges
   resources :games
   resource :dashboard
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resource :score_button_press
+    resource :rfid_tag_read, only: :create
   end
 
   root to: redirect('/dashboard')
