@@ -4,10 +4,13 @@ class LiveGame < ApplicationRecord
 
   after_save :check_if_finished
 
-  # Maybe alias both methods (:home_elo_rating, :away_elo_rating) on :user to :elo_rating
-  # delegate :home_elo_rating, to: :home_user
-  # delegate :away_elo_rating, to: :away_user
-  #
+  def home_elo_rating
+    home_user.elo
+  end
+
+  def away_elo_rating
+    away_user.elo
+  end
 
   def self.current
     find_by_current(true)
