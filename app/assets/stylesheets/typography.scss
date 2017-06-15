@@ -1,65 +1,99 @@
 body {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', cursive !important;
     color: white;
     font-size: 16px;
-}
 
-h1 {
-    font-size: 24px;
-    line-height: 1.5em;
-    color: black;
-
-    @media (max-width: 800px) {
-        font-size: 18px;
+    label {
+        color: white;
     }
 
-    @media (max-width: 500px) {
+    h1 {
+        font-size: 24px;
+        line-height: 1.5em;
+        color: black;
+
+        @media (max-width: 800px) {
+            font-size: 18px;
+        }
+
+        @media (max-width: 500px) {
+            font-size: 16px;
+        }
+    }
+
+    h2 {
+        font-size: 21px;
+        line-height: 1.5em;
+        color: white;
+        padding-bottom: 20px;
+
+        &.winner {
+            font-size: 48px;
+        }
+
+        @media (max-width: 500px) {
+            font-size: 18px;
+            line-height: 1.5em;
+
+            &.winner {
+                font-size: 32px;
+            }
+        }
+    }
+
+    h3 {
+        font-size: 140px;
+        line-height: 1em;
+        color: white;
+        margin: 0;
+
+        @media (max-width: 500px) {
+            font-size: 120px;
+            line-height: 1.5em;
+        }
+    }
+
+    h4 {
+        font-size: 22px;
+        line-height: 1.5em;
+        color: #999999;
+
+        @media (max-width: 500px) {
+            font-size: 18px;
+            line-height: 1.5em;
+        }
+    }
+
+    p {
         font-size: 16px;
+        color: white;
     }
-}
 
-h2 {
-    padding-bottom: 20px;
+    .yellow {
+        color: #F8C11C;
+    }
 
-    @media (max-width: 500px) {
-        font-size: 18px;
+    .notice {
+        color: #e63131;
+        padding: 0;
+    }
+
+    .alert {
+        padding: 0;
+    }
+
+    table {
+        font-size: 16px;
         line-height: 1.5em;
     }
-}
 
-h3 {
-    font-size: 160px;
-    line-height: 1em;
-    margin: 0;
+    input[type="submit"] {
+        font-family: 'Press Start 2P', cursive;
+        color: white;
+        font-size: 16px;
 
-    @media (max-width: 500px) {
-        font-size: 120px;
-        line-height: 1.5em;
+        &:hover {
+            text-decoration: none;
+        }
     }
-}
-
-h4 {
-    font-size: 24px;
-    line-height: 1.5em;
-    color: #999999;
-
-    @media (max-width: 500px) {
-        font-size: 18px;
-        line-height: 1.5em;
-    }
-}
-
-.notice {
-    color: #e63131;
-}
-
-table {
-    font-size: 16px;
-    line-height: 1.5em;
-}
-
-input[type="submit"] {
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-    font-size: 16px;
 }

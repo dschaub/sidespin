@@ -1,0 +1,13 @@
+<h2>Edit your profile</h2>
+
+<% if @user.slack_id.nil? %>
+  <h3>Link your slack account</h3>
+  <%= simple_form_for(@user, url: me_path, method: :put) do |f| %>
+    <%= f.input :slack_user_name %>
+
+    <%= f.submit %>
+  <% end %>
+
+<% else %>
+  <p>All up to date! Now go play some ping pong.</p>
+<% end %>

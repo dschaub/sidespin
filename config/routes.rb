@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   resources :challenges
   resources :games
   resource :dashboard
+  resource :me, only: [:show, :update], controller: 'me'
+
+  namespace :api do
+    resource :score_button_press
+  end
 
   root to: redirect('/dashboard')
 end
