@@ -21,11 +21,12 @@ class LiveGamesController < ApplicationController
 
   def update
     @live_game = LiveGame.find_by_id(params[:id])
-    if @live_game.update_score(update_params)
-      redirect_to live_game_url(@live_game)
+    if update_params.has_key?(:current)
+      @live_game.update(update_params)
     else
-      # Error or something
+      @live_game.update_score(update_params)
     end
+    redirect_to live_game_url(@live_game)
   end
 
   private

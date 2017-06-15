@@ -20,7 +20,7 @@
 
     <div class="row">
       <div class="col-sm-12">
-        <p class="yellow">Underdog</p>
+        <p class="yellow underdog-container">Underdog</p>
       </div>
     </div>
 
@@ -64,6 +64,12 @@
       </div>
     </div>
 
+     <div class="row">
+      <div class="col-sm-12">
+        <p class="yellow underdog-container"></p>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-sm-12">
         <%= simple_form_for @live_game do |f| %>
@@ -89,7 +95,8 @@
     <%= simple_form_for live_game, url: live_game_path do |f| %>
     <%= f.error :base %>
     <%= f.hidden_field :current, value: 'false' %>
-    <%= f.submit 'Finish game', class: 'button-red finish-game' %>
+    <%= f.submit 'Finish game', class: 'button-red finish-game' %><br>
+    <%= link_to "Cancel game", root_path %>
     <% end %>
 
   </div>
