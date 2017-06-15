@@ -1,4 +1,6 @@
 class LiveGamesController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :update_or_create
+
   def new
     @live_game = LiveGame.new
     @available_users = User.all.map do |user|
@@ -26,6 +28,24 @@ class LiveGamesController < ApplicationController
     else
       # Error or something
     end
+  end
+
+  def update_or_create
+    @live_game = LiveGame.current
+    player = User.find_by_tag_id(params[:tag_id])
+
+    if player.nil?
+      render :text => "User not found.", :status => 404
+    end
+
+    if @live_game.present?
+      @live_game.away_user = player
+    else
+      @live_game = LiveGame.new
+      @live_game.update_attribute(:home_user_id, player.id)
+    end
+
+    head :ok
   end
 
   private
