@@ -2,10 +2,13 @@ class LiveGame < ApplicationRecord
   belongs_to :home_user, class_name: 'User', foreign_key: :home_user_id
   belongs_to :away_user, class_name: 'User', foreign_key: :away_user_id
 
-  scope :current, ->() { find_by(current: true) }
   # Maybe alias both methods (:home_elo_rating, :away_elo_rating) on :user to :elo_rating
   # delegate :home_elo_rating, to: :home_user
   # delegate :away_elo_rating, to: :away_user
+
+  def self.current
+    find_by_current(true)
+  end
 
   def update_user_score(user_side, operator=:+)
     current_score = send("#{user_side}_user_score")
