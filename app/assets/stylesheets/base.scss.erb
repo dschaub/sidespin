@@ -16,262 +16,263 @@ body {
         background-image: url(<%= asset_data_uri 'backgroundmotion.gif' %>);
         background-size: cover;
     }
-}
 
-.content {
-    padding: 0 5% 5% 5%;
-    background-color: #000000;
-    border: 10px solid #F8C11C;
-    width: 80%;
-    max-width: 1000px;
-    display: block;
-    margin: 50px auto;
-    box-shadow: 5px 7px 1px rgba(#000000,0.5);
-}
-
-a {
-    color: white;
-    text-decoration: underline;
-    font-size: 14px;
-
-    &:hover {
-        color: #bbbbbb;
-    }
-
-    &:visited {
+    a {
         color: white;
-    }
-}
+        text-decoration: underline;
+        font-size: 14px;
 
-.pingpong-paddle {
-    width: percentage(150px/1200px);
-    max-width: 150px;
-    display: block;
-    margin: 5% auto 30px;
+        &:hover {
+            color: #bbbbbb;
+        }
 
-    @media (max-width: 800px) {
-        width: percentage(150px/800px);
-    max-width: 150px;
-    }
-}
-
-.floating-pingpong-paddle {
-    position: absolute;
-    width: percentage(150px/1200px);
-    max-width: 150px;
-    display: block;
-    margin: -60px 0 0 -9%;
-
-    @media (max-width: 800px) {
-        display: none;
-    }
-}
-
-.logo {
-    width: percentage(500px/1200px);
-    max-width: 500px;
-    display: inline-block;
-    margin: 30px auto 15px;
-
-    @media (max-width: 800px) {
-        width: percentage(500px/800px);
-        max-width: 500px;
-    }
-}
-
-.google-signin {
-    position: relative;
-    display: block;
-    text-indent: -9999px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    max-width: 275px;
-    width: percentage(275px/1200px);
-    padding-bottom: percentage(63px/1200px);
-    margin: 50px auto;
-    background-image: url(<%= asset_data_uri 'btn_google_signin_dark_normal_web@2x.png' %>);
-
-    @media (max-width: 800px) {
-        max-width: 275px;
-        width: percentage(275px/500px);
-        padding-bottom: percentage(63px/500px);
-    }
-}
-
-.leaderboard {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-
-    .left {
-        text-align: left;
-    }
-
-    th {
-        color: #999999;
-        padding: 15px 0;
-    }
-
-    td {
-        color: white;
-        padding: 15px 0;
-    }
-
-    .top-3 {
-        td {
-            color: #7ED321;
+        &:visited {
+            color: white;
         }
     }
-}
 
-.button-green, .button-red {
-    padding: 30px;
-    box-shadow: 5px 7px 1px rgba(#000000,0.5);
-    color: white;
-    display: inline-block;
-    text-decoration: none;
-
-    &:disabled {
-        background-color: #999999;
+    .content {
+        padding: 0 5% 5% 5%;
+        background-color: #000000;
+        border: 10px solid #F8C11C;
+        width: 80%;
+        max-width: 1000px;
+        display: block;
+        margin: 50px auto;
+        box-shadow: 5px 7px 1px rgba(#000000,0.5);
     }
 
-    &:hover {
+    .pingpong-paddle {
+        width: percentage(150px/1200px);
+        max-width: 150px;
+        display: block;
+        margin: 5% auto 30px;
+
+        @media (max-width: 800px) {
+            width: percentage(150px/800px);
+        max-width: 150px;
+        }
+    }
+
+    .floating-pingpong-paddle {
+        position: absolute;
+        width: percentage(150px/1200px);
+        max-width: 150px;
+        display: block;
+        margin: -60px 0 0 -9%;
+
+        @media (max-width: 800px) {
+            display: none;
+        }
+    }
+
+    .logo {
+        width: percentage(500px/1200px);
+        max-width: 500px;
+        display: inline-block;
+        margin: 30px auto 15px;
+
+        @media (max-width: 800px) {
+            width: percentage(500px/800px);
+            max-width: 500px;
+        }
+    }
+
+    .google-signin {
+        position: relative;
+        display: block;
+        text-indent: -9999px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        max-width: 275px;
+        width: percentage(275px/1200px);
+        padding-bottom: percentage(63px/1200px);
+        margin: 50px auto;
+        background-image: url(<%= asset_data_uri 'btn_google_signin_dark_normal_web@2x.png' %>);
+
+        @media (max-width: 800px) {
+            max-width: 275px;
+            width: percentage(275px/500px);
+            padding-bottom: percentage(63px/500px);
+        }
+    }
+
+    .leaderboard {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+
+        .left {
+            text-align: left;
+        }
+
+        th {
+            color: #999999;
+            padding: 15px 0;
+        }
+
+        td {
+            color: white;
+            padding: 15px 0;
+        }
+
+        .top-3 {
+            td {
+                color: #7ED321;
+            }
+        }
+    }
+
+    .button-green, .button-red {
+        padding: 30px;
+        box-shadow: 5px 7px 1px rgba(#000000,0.5);
         color: white;
+        display: inline-block;
+        text-decoration: none;
+
+        &:disabled {
+            background-color: #999999;
+        }
+
+        &:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        @media (max-width: 800px) {
+            padding: 27px;
+        }
+
+        @media (max-width: 500px) {
+            padding: 25px;
+        }
     }
 
-    @media (max-width: 800px) {
-        padding: 27px;
+    .button-green {
+        background-color: #7ED321;
+
+        &:hover {
+            background-color: #68B01A;
+        }
     }
 
-    @media (max-width: 500px) {
-        padding: 25px;
-    }
-}
+    .button-red {
+        background-color: #A20013;
 
-.button-green {
-    background-color: #7ED321;
-
-    &:hover {
-        background-color: #68B01A;
-    }
-}
-
-.button-red {
-    background-color: #A20013;
-
-    &:hover {
-        background-color: #999999;
-    }
-}
-
-.top-button {
-    margin-top: -70px;
-}
-
-.bottom-button {
-    margin-bottom: -70px;
-}
-
-.challenges {
-    display: block;
-    padding: 25px 0 30px;
-    line-height: 2.4em;
-}
-
-.game_home_user_score, .game_away_user_id, .game_away_user_score {
-    padding: 20px;
-}
-
-input[type="number"] {
-    text-align: center;
-    background-color: #000000;
-    border: 0;
-    border-bottom: 3px solid #ffffff;
-    font-size: 24px;
-    width: 100px;
-    color: #ffffff;
-    font-family: 'Press Start 2P', cursive;
-    margin: 0 30px;
-}
-
-select {
-    text-align: center;
-    background-color: #000000;
-    border: 0;
-    border-bottom: 3px solid #ffffff;
-    font-size: 16px;
-    width: 300px;
-    height: 35px;
-    color: #ffffff;
-    font-family: 'Press Start 2P', cursive;
-    margin: 0 30px;
-}
-
-input[type="submit"] {
-    padding: 30px;
-    box-shadow: 5px 7px 1px rgba(#000000,0.5);
-    color: white;
-    display: inline-block;
-    text-decoration: none;
-    margin-top: 30px;
-    border: 0;
-    cursor: pointer;
-
-    background-color: #7ED321;
-
-    &:hover {
-        background-color: #68B01A;
+        &:hover {
+            background-color: #999999;
+        }
     }
 
-    &.small-button {
-        padding: 15px 20px;
-        font-size: 14px;
-        margin-top: 0;
+    .top-button {
+        margin-top: -70px;
+    }
+
+    .bottom-button {
+        margin-bottom: -70px;
+    }
+
+    .challenges {
+        display: block;
+        padding: 25px 0 30px;
+        line-height: 2.4em;
+    }
+
+    .game_home_user_score, .game_away_user_id, .game_away_user_score {
+        padding: 20px;
+    }
+
+    input[type="number"] {
+        text-align: center;
+        background-color: #000000;
+        border: 0;
+        border-bottom: 3px solid #ffffff;
+        font-size: 24px;
+        width: 100px;
+        color: #ffffff;
+        font-family: 'Press Start 2P', cursive;
+        margin: 0 30px;
+    }
+
+    select {
+        text-align: center;
+        background-color: #000000;
+        border: 0;
+        border-bottom: 3px solid #ffffff;
+        font-size: 16px;
+        width: 300px;
+        height: 35px;
+        color: #ffffff;
+        font-family: 'Press Start 2P', cursive;
+        margin: 0 30px;
+    }
+
+    input[type="submit"] {
+        padding: 30px;
+        box-shadow: 5px 7px 1px rgba(#000000,0.5);
+        color: white;
+        display: inline-block;
+        text-decoration: none;
+        margin-top: 30px;
+        border: 0;
+        cursor: pointer;
+
+        background-color: #7ED321;
+
+        &:hover {
+            background-color: #68B01A;
+        }
+
+        &.small-button {
+            padding: 15px 20px;
+            font-size: 14px;
+            margin-top: 0;
+            display: inline-block;
+        }
+    }
+
+    .small-buttons form {
         display: inline-block;
     }
-}
 
-.small-buttons form {
-    display: inline-block;
-}
-
-.extra-margin {
-    margin-top: 50px;
-}
-
-
-table {
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-
-    .left {
-        text-align: left;
+    .extra-margin {
+        margin-top: 50px;
     }
 
-    .right {
-        text-align: right;
+
+    table {
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+
+        .left {
+            text-align: left;
+        }
+
+        .right {
+            text-align: right;
+        }
+
+        td {
+            color: white;
+            padding: 15px 0;
+        }
     }
 
-    td {
-        color: white;
-        padding: 15px 0;
+
+    .error {
+        color: red;
+        display: block;
+        padding: 40px 0 25px;
     }
-}
 
+    .show-players {
+        padding: 50px 0 25px;
+        display: inline-block;
+    }
 
-.error {
-    color: red;
-    display: block;
-    padding: 40px 0 25px;
-}
-
-.show-players {
-    padding: 50px 0 25px;
-    display: inline-block;
-}
-
-.capitalize {
-    text-transform: capitalize;
+    .capitalize {
+        text-transform: capitalize;
+    }
 }
