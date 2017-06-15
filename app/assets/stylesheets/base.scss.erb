@@ -70,7 +70,7 @@ body {
         width: percentage(500px/1200px);
         max-width: 500px;
         display: inline-block;
-        margin: 30px auto 15px;
+        margin: 30px auto 0;
 
         @media (max-width: 800px) {
             width: percentage(500px/800px);
@@ -157,14 +157,6 @@ body {
         }
     }
 
-    .button-red {
-        background-color: #A20013;
-
-        &:hover {
-            background-color: #999999;
-        }
-    }
-
     .top-button {
         margin-top: -70px;
     }
@@ -230,6 +222,14 @@ body {
             margin-top: 0;
             display: inline-block;
         }
+
+        &.button-red {
+            background-color: #D0011B;
+
+            &:hover {
+                background-color: #A20013;
+            }
+        }
     }
 
     .small-buttons form {
@@ -274,5 +274,39 @@ body {
 
     .capitalize {
         text-transform: capitalize;
+    }
+
+    .selectplayer-padding {
+        padding: 15% 0 10%;
+    }
+
+    .liveboard-padding {
+        padding: 7% 0;
+    }
+
+    .scoreboard-border {
+        border-right: 1px solid #999999;
+    }
+
+    .server-container {
+        height: 110px;
+    }
+
+    .pingpong-ball {
+        width: 70px;
+        height: 70px;
+    }
+
+    .finish-game {
+        margin-bottom: 25px;
+        margin-top: 0 !important;
+    }
+
+    .pbjelly {
+        width: 100%;
+    }
+
+    .underdog-container {
+        height: 40px;
     }
 }

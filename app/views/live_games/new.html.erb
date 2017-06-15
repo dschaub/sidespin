@@ -1,7 +1,7 @@
 
   <%= simple_form_for @live_game, url: live_games_path do |f| %>
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 selectplayer-padding scoreboard-border">
         <div class="row">
           <label>Player 1</label>
         </div>
@@ -9,7 +9,7 @@
           <%= f.input :home_user_id, as: :select, label: false, collection: @available_users, include_blank: false %>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 selectplayer-padding">
         <div class="row">
           <label>Player 2</label>
         </div>

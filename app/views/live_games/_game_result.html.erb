@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-sm-5 liveboard-padding">
+    <%= image_tag "pbjelly.gif", class: 'pbjelly' %>
+    </div>
+    <div class="col-sm-7 liveboard-padding">
+        <h4 class="yellow animated bounceIn">WINNER</h4>
+<% winner, loser = live_game.home_user_score > live_game.away_user_score ? [live_game.home_user, live_game.away_user] : [live_game.away_user, live_game.home_user] %>
+
+        <h2 class="winner"><%= winner.full_name %></h2><br>
+        <p>has defeated<br><%= loser.full_name %></p>
+        <p class="liveboard-padding"><%= link_to 'Back to leaderboard', root_path %></p>
+    </div>
+</div>

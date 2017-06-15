@@ -8,6 +8,8 @@ class Challenge < ApplicationRecord
   validate :must_not_be_played_and_rejected
   validate :must_only_have_one_pending_challenge
 
+  after_create :send_reminder
+
   def self.related_to_users(user_1, user_2)
     find_by(home_user: user_1, away_user: user_2) || find_by(home_user: user_2, away_user: user_1)
   end
@@ -27,6 +29,10 @@ class Challenge < ApplicationRecord
   def reject!
     self.rejected_at = Time.zone.now
     save!
+  end
+
+  def send_reminder
+    away_user.remind(home_user)
   end
 
   private
