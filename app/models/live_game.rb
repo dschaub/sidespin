@@ -30,7 +30,7 @@ class LiveGame < ApplicationRecord
   end
 
   def server
-    method_to_determine_server = total_score >= 4 ? :every_two : :every_five
+    method_to_determine_server = total_score >= 40 ? :every_two : :every_five
     [:home, :away][send(method_to_determine_server)]
   end
 
