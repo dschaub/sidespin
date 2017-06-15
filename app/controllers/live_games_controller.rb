@@ -31,7 +31,7 @@ class LiveGamesController < ApplicationController
   private
 
   def update_params
-    params.require(:live_game).permit(:user_type, :score_updater)
+    params.require(:live_game).permit(:user_type, :score_updater, :current)
   end
 
   def create_params

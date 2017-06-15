@@ -27,9 +27,17 @@ body {
         color: white;
         padding-bottom: 20px;
 
+        &.winner {
+            font-size: 48px;
+        }
+
         @media (max-width: 500px) {
             font-size: 18px;
             line-height: 1.5em;
+
+            &.winner {
+                font-size: 32px;
+            }
         }
     }
 

@@ -1,49 +1,5 @@
-<div class="row">
-  <div class="col-sm-6 scoreboard-border liveboard-padding">
-    <div class="row server-container">
-      <div class="col-sm-12" id="server-ball">
-        <%= image_tag "pingpongball.png", class: 'pingpong-ball' %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h3><%= @live_game.home_user_score %></h3>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h4><%= @live_game.home_user.full_name %></h4>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <p class="yellow">Underdog</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6 liveboard-padding">
-    <div class="row server-container">
-      <div class"col-sm-12" id="server-ball">
-
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h3><%= @live_game.away_user_score %></h3>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-12">
-        <h4><%= @live_game.away_user.full_name %></h4>
-      </div>
-    </div>
-  </div>
-</div>
-<%= link_to "Finish game", new_live_game_path, class: 'button-red bottom-button' %>
-<%= link_to "Cancel game".html_safe, challenges_path %>
+<% if @live_game.current? %>
+    <%= render partial: "scoreboard", locals: { live_game: @live_game } %>
+<% else %>
+    <%= render partial: 'game_result', locals: { live_game: @live_game } %>
+<% end %>
