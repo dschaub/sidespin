@@ -90,6 +90,7 @@ class User < ApplicationRecord
       client.chat_postMessage(channel: slack_id, text: "#{reminding_user.full_name} wants you to play you in ping pong!", as_user: true)
     end
   rescue
+      Rails.logger.error('slack did not remind properly')
       #in case slack messes up
   end
 

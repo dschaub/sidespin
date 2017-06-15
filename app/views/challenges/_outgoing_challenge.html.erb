@@ -6,6 +6,6 @@
     <%= outgoing_challenge.created_at.strftime('%m/%d/%Y') %>
   </td>
   <td class="right">
-    <%= button_to "Nudge", '#', class: 'small-button'  %>
+    <%= button_to "Nudge", challenge_nudge_path(outgoing_challenge), class: 'small-button'  %>
   </td>
 </tr>
