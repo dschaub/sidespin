@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   before_create :assign_default_elo
   after_create :assign_slack_id
+  attr_reader :slack_user_name
 
   def self.from_omniauth(auth)
     if oauth_allowed_domain? auth
@@ -92,6 +93,12 @@ class User < ApplicationRecord
       #in case slack messes up
   end
 
+  def slack_user_name=(slack_user_name)
+    slack_user_name.prepend('@') unless slack_user_name.starts_with?('@')
+    self.slack_id = SlackUser.new(user_name: slack_user_name).id
+    save!
+  end
+
   class << self
     private
 
@@ -110,8 +117,8 @@ class User < ApplicationRecord
     @all_games ||= home_games.or(away_games)
   end
 
-  def assign_slack_id
-    self.slack_id = SlackUser.new(self).id
+  def assign_slack_id_by_email
+    self.slack_id = SlackUser.new(email: email).id
     save!
   rescue
 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :challenges
   resources :games
   resource :dashboard
+  resource :me, only: [:show, :update], controller: 'me'
 
   root to: redirect('/dashboard')
 end
