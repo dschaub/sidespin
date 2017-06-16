@@ -1,5 +1,5 @@
-$('#home_user_full_name').text('<%= LiveGame.current.try(:home_user).try(:full_name) || 'Awayting Home Player' %>');
-$('#away_user_full_name').text('<%= LiveGame.current.try(:away_user).try(:full_name) || 'Awayting Away Player' %>');
+$('#home_user_full_name').text('<%= LiveGame.current.try(:home_user).try(:full_name) || 'Awaiting Home Player' %>');
+$('#away_user_full_name').text('<%= LiveGame.current.try(:away_user).try(:full_name) || 'Awaiting Away Player' %>');
 
 $('#home_user_score').text('<%= @live_game.try(:home_user_score) %>');
 $('#away_user_score').text('<%= @live_game.try(:away_user_score) %>');
