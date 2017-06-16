@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6 scoreboard-border liveboard-padding">
     <div class="row server-container">
-      <div class="col-sm-offset-4 col-xs-offset-5">
+      <div class="col-sm-12 server-container">
         <%= image_tag "pingpongball.png", class: "pingpong-ball home #{'show' if @live_game.try(:server) == :home }", id: 'server-ball' %>
       </div>
     </div>
@@ -50,7 +50,7 @@
 
   <div class="col-sm-6 liveboard-padding">
     <div class="row server-container">
-      <div class="col-sm-offset-4 col-xs-offset-5">
+      <div class="col-sm-12 server-container">
         <%= image_tag "pingpongball.png", class: "pingpong-ball away #{'show' if @live_game.try(:server) == :away }", id: 'server-ball' %>
       </div>
     </div>
