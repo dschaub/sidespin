@@ -4,7 +4,7 @@ class Api::RfidTagReadsController < ApplicationController
 
   def create
     @live_game = LiveGame.current
-    player = User.find_by_tag_id(params[:tag_id])
+    player = User.where(tag_id: params[:tag_id]).first
 
     if player.nil?
       render :text => "User not found.", :status => 404
