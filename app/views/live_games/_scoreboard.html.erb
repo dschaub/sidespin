@@ -2,41 +2,47 @@
   <div class="col-sm-6 scoreboard-border liveboard-padding">
     <div class="row server-container">
       <div class="col-sm-offset-4 col-xs-offset-5">
-        <%= image_tag "pingpongball.png", class: "pingpong-ball #{'show' if @live_game.server == :home }", id: 'server-ball' %>
+        <%= image_tag "pingpongball.png", class: "pingpong-ball home #{'show' if @live_game.try(:server) == :home }", id: 'server-ball' %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <h3 id="home_user_score"><%= live_game.home_user_score %></h3>
+        <h3 id="home_user_score"><%= live_game.try(:home_user_score) %></h3>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <h4><%= live_game.home_user.full_name %></h4>
+        <h4 id='home_user_full_name'>
+          <%= live_game.try(:home_user).try(:full_name) || 'Awayting Home Player' %>
+        </h4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <p class="yellow underdog-container <%= 'show' if @live_game.underdog == :home %>">Underdog</p>
+        <p class="yellow underdog-container home <%= 'show' if @live_game.try(:underdog) == :home %>">Underdog</p>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-4 col-sm-offset-2 adjust-scores">
-        <%= simple_form_for @live_game do |f| %>
-        <%= f.input_field :user_side, as: :hidden, value: 'home' %>
-        <%= f.input_field :operator, as: :hidden, value: '-' %>
-        <%= f.submit '-' %>
+        <% if @live_game.present? %>
+          <%= simple_form_for @live_game do |f| %>
+          <%= f.input_field :user_side, as: :hidden, value: 'home' %>
+          <%= f.input_field :operator, as: :hidden, value: '-' %>
+          <%= f.submit '-' %>
+          <% end %>
         <% end %>
       </div>
       <div class="col-sm-4 adjust-scores">
-        <%= simple_form_for @live_game do |f| %>
-        <%= f.input_field :user_side, as: :hidden, value: 'home' %>
-        <%= f.input_field :operator, as: :hidden, value: '+' %>
-        <%= f.submit '+' %>
+        <% if @live_game.present? %>
+          <%= simple_form_for @live_game do |f| %>
+            <%= f.input_field :user_side, as: :hidden, value: 'home' %>
+            <%= f.input_field :operator, as: :hidden, value: '+' %>
+            <%= f.submit '+' %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -45,68 +51,76 @@
   <div class="col-sm-6 liveboard-padding">
     <div class="row server-container">
       <div class="col-sm-offset-4 col-xs-offset-5">
-        <%= image_tag "pingpongball.png", class: "pingpong-ball #{'show' if @live_game.server == :away }", id: 'server-ball' %>
+        <%= image_tag "pingpongball.png", class: "pingpong-ball away #{'show' if @live_game.try(:server) == :away }", id: 'server-ball' %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <h3 id="away_user_score"><%= live_game.away_user_score %></h3>
+        <h3 id="away_user_score">
+          <%= live_game.try(:away_user_score) %>
+        </h3>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <h4><%= live_game.away_user.full_name %></h4>
+        <h4 id='away_user_full_name'>
+          <%= live_game.try(:away_user).try(:full_name) || 'Awayting Away Player' %>
+        </h4>
       </div>
     </div>
 
      <div class="row">
       <div class="col-sm-12">
-        <p class="yellow underdog-container <%= 'show' if @live_game.underdog == :away %>">Underdog</p>
+        <p class="yellow underdog-container away <%= 'show' if @live_game.try(:underdog) == :away %>">Underdog</p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-4 col-sm-offset-2 adjust-scores">
-        <%= simple_form_for @live_game do |f| %>
-        <%= f.input_field :user_side, as: :hidden, value: 'away' %>
-        <%= f.input_field :operator, as: :hidden, value: '-' %>
-        <%= f.submit '-' %>
-        <% end %>
-      </div>
-      <div class="col-sm-4 adjust-scores">
-        <%= simple_form_for @live_game do |f| %>
-        <%= f.input_field :user_side, as: :hidden, value: 'away' %>
-        <%= f.input_field :operator, as: :hidden, value: '+' %>
-        <%= f.submit '+' %>
-        <% end %>
-      </div>
+      <%# Hide this with a class so it shows with the turbolinks %>
+      <% if @live_game.present? %>
+        <div class="col-sm-4 col-sm-offset-2 adjust-scores">
+          <%= simple_form_for @live_game do |f| %>
+          <%= f.input_field :user_side, as: :hidden, value: 'away' %>
+          <%= f.input_field :operator, as: :hidden, value: '-' %>
+          <%= f.submit '-' %>
+          <% end %>
+        </div>
+        <div class="col-sm-4 adjust-scores">
+          <%= simple_form_for @live_game do |f| %>
+          <%= f.input_field :user_side, as: :hidden, value: 'away' %>
+          <%= f.input_field :operator, as: :hidden, value: '+' %>
+          <%= f.submit '+' %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 
-  <div class="col-sm-12">
-    <%= simple_form_for live_game, url: live_game_path do |f| %>
-    <%= f.error :base %>
-    <%= f.hidden_field :current, value: 'false' %>
-    <%= f.submit 'Finish game', class: 'button-red finish-game' %><br>
-    <%= link_to "Cancel game", root_path %>
-    <% end %>
-
-  </div>
+  <% if live_game.present? %>
+    <div class="col-sm-12">
+      <%= simple_form_for live_game do |f| %>
+        <%= f.error :base %>
+        <%= f.hidden_field :current, value: 'false' %>
+        <%= f.submit 'Finish game', class: 'button-red finish-game' %><br>
+        <%= link_to "Cancel game", root_path %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <script>
-(function() {
-  var interval = setInterval(function() {
-    $.ajax({
-      url: '/live_games/<%= @live_game.id %>',
-      dataType: 'script'
-    });
-  }, 2000);
+  (function() {
+    var interval = setInterval(function() {
+      $.ajax({
+        url: '/live_games/<%= action_name == 'current' ? 'current' : @live_game.id %>',
+        dataType: 'script'
+      });
+    }, 2000);
 
-  $(document).on('turbolinks:click', function() {
-    clearInterval(interval);
-  });
-})();
+    $(document).on('turbolinks:click', function() {
+      clearInterval(interval);
+    });
+  })();
 </script>

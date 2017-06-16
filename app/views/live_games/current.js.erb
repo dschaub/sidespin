@@ -1,0 +1,16 @@
+$('#home_user_full_name').text('<%= LiveGame.current.try(:home_user).try(:full_name) || 'Awayting Home Player' %>');
+$('#away_user_full_name').text('<%= LiveGame.current.try(:away_user).try(:full_name) || 'Awayting Away Player' %>');
+
+$('#home_user_score').text('<%= @live_game.try(:home_user_score) %>');
+$('#away_user_score').text('<%= @live_game.try(:away_user_score) %>');
+
+$('.underdog-container.home').addClass('<%= 'show' if @live_game.try(:underdog) == :home %>');
+$('.underdog-container.away').addClass('<%= 'show' if @live_game.try(:underdog) == :away %>');
+
+<% if @live_game.try(:server) == :home %>
+  $('.pingpong-ball.home').addClass('show');
+  $('.pingpong-ball.away').removeClass('show');
+<% elsif @live_game.try(:server) == :away %>
+  $('.pingpong-ball.home').removeClass('show');
+  $('.pingpong-ball.away').addClass('show');
+<% end %>

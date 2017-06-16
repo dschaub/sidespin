@@ -38,6 +38,7 @@ class LiveGame < ApplicationRecord
   end
 
   def underdog
+    return nil unless home_user.present? && away_user.present?
     return nil if home_elo_rating == away_elo_rating
     home_elo_rating < away_elo_rating ? :home : :away
   end

@@ -6,6 +6,10 @@ class LiveGamesController < ApplicationController
     end
   end
 
+  def current
+    @live_game = LiveGame.current
+  end
+
   def show
     @live_game = LiveGame.find_by_id(params[:id])
   end
