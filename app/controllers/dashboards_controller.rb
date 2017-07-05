@@ -5,6 +5,6 @@ class DashboardsController < ApplicationController
     @showing_all = params[:all_players].present?
     @game = current_user.build_game
     @leaderboard_users = User.by_elo
-    @leaderboard_users = @leaderboard_users.rankable.limit(10) unless @showing_all
+    @leaderboard_users = @leaderboard_users.rankable unless @showing_all
   end
 end
