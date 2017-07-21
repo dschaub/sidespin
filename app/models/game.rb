@@ -2,6 +2,7 @@ class Game < ApplicationRecord
   belongs_to :home_user, class_name: 'User'
   belongs_to :away_user, class_name: 'User'
 
+  scope :played_by, ->(user) { where(home_user: user).or(where(away_user: user)) }
   scope :won_by_home_user, -> { where('home_user_score > away_user_score') }
   scope :won_by_away_user, -> { where('away_user_score > home_user_score') }
   scope :played_since, -> (since) { where('created_at >= ?', since) }
@@ -22,6 +23,14 @@ class Game < ApplicationRecord
   def won_by?(user)
     (home_user == user && home_user_score > away_user_score) ||
       (away_user == user && away_user_score > home_user_score)
+  end
+
+  def opponent_of(user)
+    home_user == user ? away_user : home_user
+  end
+
+  def display_result_for(user)
+    "#{won_by?(user) ? 'W' : 'L'} #{home_user_score} - #{away_user_score}"
   end
 
   private

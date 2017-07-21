@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :games
   resource :dashboard
   resource :me, only: [:show, :update], controller: 'me'
+  resources :users, only: :show
 
   namespace :api do
     resource :score_button_press

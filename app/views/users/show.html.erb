@@ -1,0 +1,17 @@
+<h2 class="extra-margin"><%= @user.full_name %></h2>
+
+<table class="game-history">
+  <tr>
+    <th>Date</th>
+    <th>Opponent</th>
+    <th>Result</th>
+  </tr>
+
+  <% @games.each do |game| %>
+    <tr>
+      <td><%= game.created_at.to_s(:short_reverse) %></td>
+      <td><%= game.opponent_of(@user).full_name %></td>
+      <td><%= game.display_result_for(@user) %></td>
+    </tr>
+  <% end %>
+</table>

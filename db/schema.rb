@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 20170616153147) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "elo", null: false
-    t.string "tag_id"
     t.string "slack_id"
+    t.string "tag_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
